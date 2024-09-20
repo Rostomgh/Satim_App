@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:satim_hack/Router/OngenerateRoute.dart';
+import 'package:satim_hack/core/Router/OngenerateRoute.dart';
 import 'package:satim_hack/core/Ui/LogoScreen.dart';
 void main() {
   runApp(const MyApp());
