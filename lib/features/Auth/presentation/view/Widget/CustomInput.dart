@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:satim_hack/core/Theme/AppColor.dart';
 
 
 class CustomInput extends StatelessWidget {
@@ -21,10 +22,13 @@ class CustomInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 317,
-      height: 56,
+      
+      width: 370,
+      height: 50,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.57),
+        color: AppColor.backgroundB,
+        borderRadius: BorderRadius.circular(16),
+        
       ),
       child: TextFormField(
         keyboardType: keyboardType,
@@ -35,18 +39,20 @@ class CustomInput extends StatelessWidget {
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: AppColor.backgroundB),
           ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
           hintText: hint,
           hintStyle: const TextStyle(
-            color: AppColors.hintColor,
-            fontWeight: FontWeight.w500,
+            color: AppColor.hint,
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
           ),
           prefixIcon: icon != null
               ? Icon(
                   icon,
-                  color: AppColor.hintColor, // Color of the icon
+                  color: AppColor.hint, // Color of the icon
                 )
               : null,
         ),
