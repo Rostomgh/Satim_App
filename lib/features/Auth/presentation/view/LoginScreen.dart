@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:satim_hack/Logic/bloc/auth_bloc.dart';
 import 'package:satim_hack/core/Theme/AppColor.dart';
 import 'package:satim_hack/core/helper/Assets.dart';
 import 'package:satim_hack/core/helper/CustomBox.dart';
@@ -19,6 +21,20 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  void _showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  void _hideLoadingDialog(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +51,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 Image.asset(Assets.LoginP),
                 verticalSpace(30),
                 const Center(
-                  child: Text('Login',
-                      style: TextStyle(
-                          fontFamily: 'PoppinsRegular',
-                          color: AppColor.black,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w500)),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                      fontFamily: 'PoppinsRegular',
+                      color: AppColor.black,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
                 verticalSpace(20),
                 const Padding(
@@ -48,9 +67,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     'Drop your username and password here',
                     style: TextStyle(
-                        fontFamily: 'PoppinsRegular',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400),
+                      fontFamily: 'PoppinsRegular',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
                 verticalSpace(20),
@@ -91,13 +111,47 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Text(
                   'Forget your password ?',
                   style: TextStyle(
-                      fontFamily: 'PoppinsRegular', fontSize: 15, fontWeight: FontWeight.w400),
+                    fontFamily: 'PoppinsRegular',
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
                 verticalSpace(10),
-                GradientButton(
-                  text: 'Login',
-                  onPressed: () {},
+                
+                BlocListener<AuthBloc, AuthState>(
+                  listener: (context, state) {
+                    if (state is AuthLoading) {
+                      _showLoadingDialog(context);
+                      print('AuthLoading state detected');
+                    } else if (state is AuthSuccess) {
+                      _hideLoadingDialog(context);
+                      Future.delayed(const Duration(milliseconds: 300), () {
+                        Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+                        print('Navigating to /home');
+                      });
+                    } else if (state is AuthError) {
+                      _hideLoadingDialog(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(state.error)),
+                      );
+                      print('AuthError state detected: ${state.error}');
+                    }
+                  },
+                  child: GradientButton(
+                    text: 'Login',
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        BlocProvider.of<AuthBloc>(context).add(
+                          AuthLogin(
+                            emailController.text.trim(),
+                            passwordController.text.trim(),
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ),
+
                 verticalSpace(17),
                 const CustomGoogle(),
                 verticalSpace(5),

@@ -32,7 +32,7 @@ class AuthRepo implements ServiceAuth {
     try {
       final response = await apiService.post(
         endPoint: Enpoint.signup,
-        query: {'username': username, 'email': email, 'password': password},
+        query: { 'email': email, 'password': password,},
       );
 
       if (response.statusCode == 201) {
@@ -42,7 +42,7 @@ class AuthRepo implements ServiceAuth {
       }
     } catch (e) {
       print(e);
-      // You might want to handle different types of exceptions here
+
       throw Exception('Signup Failed: $e');
     }
   }
