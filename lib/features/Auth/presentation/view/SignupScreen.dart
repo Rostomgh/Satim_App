@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hugeicons/hugeicons.dart';
 import 'package:satim_hack/core/Theme/AppColor.dart';
 import 'package:satim_hack/core/helper/Assets.dart';
 import 'package:satim_hack/core/helper/CustomBox.dart';
@@ -14,6 +13,7 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  bool _isChecked = false; 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController fullnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -46,7 +46,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 verticalSpace(20),
                 const Center(
                   child: Text(
-                    'write your information below',
+                    'Write your information below',
                     style: TextStyle(
                         fontFamily: 'PoppinsRegular',
                         fontSize: 14,
@@ -56,37 +56,35 @@ class _SignupScreenState extends State<SignupScreen> {
                 verticalSpace(20),
                 CustomInput(
                   hint: 'Full Name',
-                  obc: true,
+                  obc: false, 
                   icon: Icons.person,
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.text,
                   mycontroller: fullnameController,
                   valid: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Full Name cannot be empty';
                     }
-
                     return null;
                   },
                 ),
                 verticalSpace(18),
                 CustomInput(
-                  hint: 'UserName',
-                  obc: true,
-                  icon: Icons.email,
-                  keyboardType: TextInputType.visiblePassword,
+                  hint: 'Username',
+                  obc: false, 
+                  icon: Icons.person_outline,
+                  keyboardType: TextInputType.text,
                   mycontroller: usernameController,
                   valid: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'UserName cannot be empty';
+                      return 'Username cannot be empty';
                     }
-
                     return null;
                   },
                 ),
                 verticalSpace(18),
                 CustomInput(
                   hint: 'Email',
-                  obc: false,
+                  obc: false, 
                   icon: Icons.email,
                   keyboardType: TextInputType.emailAddress,
                   mycontroller: emailController,
@@ -103,7 +101,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 verticalSpace(18),
                 CustomInput(
                   hint: 'Password',
-                  obc: true,
+                  obc: true, 
                   icon: Icons.lock,
                   keyboardType: TextInputType.visiblePassword,
                   mycontroller: passwordController,
@@ -117,11 +115,41 @@ class _SignupScreenState extends State<SignupScreen> {
                     return null;
                   },
                 ),
-                verticalSpace(56),
+                verticalSpace(20),
+                Row(
+                  children: [
+                    Checkbox(
+                      value: _isChecked,
+                      activeColor: AppColor.satim,
+                      onChanged: (bool? newValue) {
+                        setState(() {
+                          _isChecked = newValue ?? false;
+                        });
+                      },
+                    ),
+                    const Text(
+                      'I agree to the Terms and Conditions',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
                 GradientButton(
                   text: 'Sign Up',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/home');
+                    if (_formKey.currentState?.validate() ?? false) {
+                      if (_isChecked) {
+                        Navigator.pushNamed(context, '/home');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please accept terms and conditions'),
+                          ),
+                        );
+                      }
+                    }
                   },
                 ),
               ],
