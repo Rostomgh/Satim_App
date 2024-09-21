@@ -13,9 +13,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  bool _isChecked = false; 
+  bool _isChecked = false;
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController fullnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -55,22 +54,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 verticalSpace(20),
                 CustomInput(
-                  hint: 'Full Name',
-                  obc: false, 
-                  icon: Icons.person,
-                  keyboardType: TextInputType.text,
-                  mycontroller: fullnameController,
-                  valid: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Full Name cannot be empty';
-                    }
-                    return null;
-                  },
-                ),
-                verticalSpace(18),
-                CustomInput(
                   hint: 'Username',
-                  obc: false, 
+                  obc: false,
                   icon: Icons.person_outline,
                   keyboardType: TextInputType.text,
                   mycontroller: usernameController,
@@ -84,7 +69,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 verticalSpace(18),
                 CustomInput(
                   hint: 'Email',
-                  obc: false, 
+                  obc: false,
                   icon: Icons.email,
                   keyboardType: TextInputType.emailAddress,
                   mycontroller: emailController,
@@ -101,7 +86,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 verticalSpace(18),
                 CustomInput(
                   hint: 'Password',
-                  obc: true, 
+                  obc: true,
                   icon: Icons.lock,
                   keyboardType: TextInputType.visiblePassword,
                   mycontroller: passwordController,
