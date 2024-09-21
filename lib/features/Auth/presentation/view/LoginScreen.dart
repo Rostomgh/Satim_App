@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:satim_hack/Logic/bloc/auth_bloc.dart';
+import 'package:satim_hack/Logic/auth_bloc/auth_bloc.dart';
+
 import 'package:satim_hack/core/Theme/AppColor.dart';
 import 'package:satim_hack/core/helper/Assets.dart';
 import 'package:satim_hack/core/helper/CustomBox.dart';
@@ -143,8 +144,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_formKey.currentState!.validate()) {
                         BlocProvider.of<AuthBloc>(context).add(
                           AuthLogin(
-                            emailController.text.trim(),
-                            passwordController.text.trim(),
+                            emailController.text,
+                            passwordController.text,
                           ),
                         );
                       }
