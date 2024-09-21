@@ -15,21 +15,28 @@ class CustomGoogle extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onpress,
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColor.white, 
+            backgroundColor: AppColor.white,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
                 side: const BorderSide(color: AppColor.black, width: 3)),
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center, // Add this line
             children: [
-              horizontal(95),
-              Image.asset(Assets.iconGoogle,height: 16,width: 18,),
+              Image.asset(
+                Assets.iconGoogle,
+                height: 16,
+                width: 18,
+              ),
               horizontal(7),
-              const Text('Sign in with Google',style: TextStyle(
-                color: AppColor.black,
-                fontWeight: FontWeight.w700,
-                fontSize: 15
-              ),)
+              const Text(
+                'Sign in with Google',
+                style: TextStyle(
+                    fontFamily: 'PoppinsRegular',
+                    color: AppColor.black,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15),
+              )
             ],
           )),
     );

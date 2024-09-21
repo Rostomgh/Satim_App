@@ -37,12 +37,13 @@ class CustomInput extends StatelessWidget {
         controller: mycontroller,
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+          border: InputBorder.none,
+          /*border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
             borderSide: const BorderSide(color: AppColor.backgroundB),
-          ),
+          ),*/
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           hintText: hint,
           hintStyle: const TextStyle(
             color: AppColor.hint,
@@ -52,7 +53,7 @@ class CustomInput extends StatelessWidget {
           prefixIcon: icon != null
               ? Icon(
                   icon,
-                  color: AppColor.hint, // Color of the icon
+                  color: AppColor.hint, 
                 )
               : null,
         ),

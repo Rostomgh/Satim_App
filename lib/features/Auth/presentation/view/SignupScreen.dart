@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:satim_hack/core/Theme/AppColor.dart';
 import 'package:satim_hack/core/helper/Assets.dart';
 import 'package:satim_hack/core/helper/CustomBox.dart';
 import 'package:satim_hack/features/Auth/presentation/view/Widget/CustomButton.dart';
-import 'package:satim_hack/features/Auth/presentation/view/Widget/CustomGoogle.dart';
 import 'package:satim_hack/features/Auth/presentation/view/Widget/CustomInput.dart';
-import 'package:satim_hack/features/Auth/presentation/view/Widget/CustomSepar.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController fullnameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Image.asset(Assets.LoginP),
                 verticalSpace(30),
                 const Center(
-                  child: Text('Login',
+                  child: Text('Register',
                       style: TextStyle(
                           fontFamily: 'PoppinsRegular',
                           color: AppColor.black,
@@ -43,10 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w500)),
                 ),
                 verticalSpace(20),
-                const Padding(
-                  padding: EdgeInsets.only(left: 30.0, right: 30),
+                const Center(
                   child: Text(
-                    'Drop your username and password here',
+                    'write your information below',
                     style: TextStyle(
                         fontFamily: 'PoppinsRegular',
                         fontSize: 14,
@@ -54,6 +54,36 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 verticalSpace(20),
+                CustomInput(
+                  hint: 'Full Name',
+                  obc: true,
+                  icon: Icons.person,
+                  keyboardType: TextInputType.visiblePassword,
+                  mycontroller: fullnameController,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Full Name cannot be empty';
+                    }
+
+                    return null;
+                  },
+                ),
+                verticalSpace(18),
+                CustomInput(
+                  hint: 'UserName',
+                  obc: true,
+                  icon: Icons.email,
+                  keyboardType: TextInputType.visiblePassword,
+                  mycontroller: usernameController,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'UserName cannot be empty';
+                    }
+
+                    return null;
+                  },
+                ),
+                verticalSpace(18),
                 CustomInput(
                   hint: 'Email',
                   obc: false,
@@ -70,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
-                verticalSpace(16),
+                verticalSpace(18),
                 CustomInput(
                   hint: 'Password',
                   obc: true,
@@ -87,26 +117,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
-                verticalSpace(11),
-                const Text(
-                  'Forget your password ?',
-                  style: TextStyle(
-                      fontFamily: 'PoppinsRegular', fontSize: 15, fontWeight: FontWeight.w400),
-                ),
-                verticalSpace(10),
+                verticalSpace(56),
                 GradientButton(
-                  text: 'Login',
-                  onPressed: () {},
-                ),
-                verticalSpace(17),
-                const CustomGoogle(),
-                verticalSpace(5),
-                const CustomSepar(),
-                verticalSpace(10),
-                GradientButton(
-                  text: 'Register',
+                  text: 'Sign Up',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/signup');
+                    Navigator.pushNamed(context, '/home');
                   },
                 ),
               ],
