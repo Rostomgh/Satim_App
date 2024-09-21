@@ -3,6 +3,7 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:satim_hack/core/Theme/AppColor.dart';
 import 'package:satim_hack/core/helper/Assets.dart';
 import 'package:satim_hack/core/helper/CustomBox.dart';
+import 'package:satim_hack/features/home/presentation/view/Widget/CustomCard.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -41,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+      body: CustomCard(),
       floatingActionButton: FloatingActionButton(onPressed:(){} ,
       backgroundColor: AppColor.satim,
       child: Icon(Icons.add,color: AppColor.white,size: 30,),

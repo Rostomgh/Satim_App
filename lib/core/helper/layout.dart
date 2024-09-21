@@ -17,8 +17,8 @@ class LayoutScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.surface,
           body: cubit.pages[cubit.currentIndex],
           bottomNavigationBar: NavigationBar(
-            backgroundColor: Theme.of(context).colorScheme.onPrimary,
-            elevation: 1.0,
+            backgroundColor: AppColor.white,
+            elevation: 2.0,
             selectedIndex: cubit.currentIndex,
             
             onDestinationSelected: (value) {
@@ -41,8 +41,14 @@ class LayoutScreen extends StatelessWidget {
                 label: 'Home',
               ),
               NavigationDestination(
-                icon: Image.asset(Assets.nav2, height: 130,width: 130),
-                label: 'Your Requests',
+                icon: Image.asset(
+                  Assets.nav3,
+                  height: 24,
+                  color: cubit.currentIndex == 3
+                    ?  AppColor.satim
+                      : AppColor.black,
+                ),
+                label: 'Your Request'
               ),
               NavigationDestination(
                 icon: Image.asset(
