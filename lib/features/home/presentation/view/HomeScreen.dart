@@ -29,11 +29,13 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 4,
         actions:  [
         
-          const HugeIcon(
-            icon: HugeIcons.strokeRoundedNotification01,
+           IconButton(onPressed: (){
+            Navigator.pushNamed(context, ('/notify'));
+           }, icon:  const HugeIcon(
+            icon:HugeIcons.strokeRoundedNotification01,
             color: Colors.black,
             size: 30.0,
-          ),
+          ),),
           horizontal(15),
             const HugeIcon(
             icon: HugeIcons.strokeRoundedMenu01,
@@ -42,13 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: CustomCard(),
+      body: const CustomCard(),
       floatingActionButton: FloatingActionButton(onPressed:(){} ,
       backgroundColor: AppColor.satim,
-      child: Icon(Icons.add,color: AppColor.white,size: 30,),
        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50), // Adjust the radius as needed
         ),
+      child: const Icon(Icons.add,color: AppColor.white,size: 30,),
       ),
     );
   }

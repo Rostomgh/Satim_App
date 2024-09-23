@@ -9,4 +9,5 @@ class AppColor {
   static const Color hint = Color(0xff1C1C1C);
   static const Color white=Colors.white;
   static const Color backgroundB = Color(0xffF0EDFF);
+  static const Color greenNotif=Color(0xff00AC4F);
 }

@@ -46,32 +46,38 @@ class _CustomCardState extends State<CustomCard> {
                   color: AppColor.black,
                   fontFamily: 'PoppinsRegular'),
             ),
-            CustomInput(
-                hint: 'Your Email',
-                obc: false,
-                keyboardType: TextInputType.url,
-                icon: Icons.web,
-                mycontroller: mycontrollerEmail,
-                valid: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Url cannot be empty';
-                  }
-                  return null;
-                }),
+            Padding(
+              padding: const EdgeInsets.only(left:10.0,right: 10),
+              child: CustomInput(
+                  hint: 'Your Email',
+                  obc: false,
+                  keyboardType: TextInputType.url,
+                  icon: Icons.web,
+                  mycontroller: mycontrollerEmail,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Url cannot be empty';
+                    }
+                    return null;
+                  }),
+            ),
             verticalSpace(10),
-            CustomInput(
-                hint: 'Url',
-                obc: false,
-                keyboardType: TextInputType.url,
-                icon: Icons.link,
-                mycontroller: url,
-                valid: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Url cannot be empty';
-                  }
-                  return null;
-                }),
-            verticalSpace(15),
+            Padding(
+              padding: const EdgeInsets.only(left:10.0,right: 10),
+              child: CustomInput(
+                  hint: 'Url',
+                  obc: false,
+                  keyboardType: TextInputType.url,
+                  icon: Icons.link,
+                  mycontroller: url,
+                  valid: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Url cannot be empty';
+                    }
+                    return null;
+                  }),
+            ),
+            verticalSpace(19),
             GradientButton(
               text: 'Submit',
               onPressed: () {

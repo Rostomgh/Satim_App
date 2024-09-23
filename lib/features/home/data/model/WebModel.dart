@@ -1,21 +1,20 @@
-
 class WebModel {
-  
+  //final String emailY;
   final String url;
 
-  WebModel({ required this.url});
+  WebModel(/*this.emailY,*/ {required this.url});
 
   factory WebModel.fromJson(Map<String, dynamic> json) {
     return WebModel(
-      //nameWeb: json['nameWeb'] as String,
+      //emailY: json['emailY'] as String,
       url: json['url'] as String,
     );
   }
-    Map<String, dynamic> toJson() {
+
+  Map<String, dynamic> toJson() {
     return {
-      //'nameWeb': nameWeb,
+    //  'emailY': emailY,
       'url': url,
-    
     };
   }
 }
