@@ -10,4 +10,5 @@ class AppColor {
   static const Color white=Colors.white;
   static const Color backgroundB = Color(0xffF0EDFF);
   static const Color greenNotif=Color(0xff00AC4F);
+  static const Color notActive=Color(0xffD97101);
 }
