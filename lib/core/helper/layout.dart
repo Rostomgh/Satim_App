@@ -33,7 +33,7 @@ class LayoutScreen extends StatelessWidget {
               NavigationDestination(
                 icon: Image.asset(
                   Assets.nav1,
-                  height: 24,
+                  height: 28,
                   color: cubit.currentIndex == 0
                         ?  AppColor.satim
                       : AppColor.black,
@@ -43,7 +43,7 @@ class LayoutScreen extends StatelessWidget {
               NavigationDestination(
                 icon: Image.asset(
                   Assets.nav2,
-                  height: 24,
+                  height: 28,
                   color: cubit.currentIndex == 1
                     ?  AppColor.satim
                       : AppColor.black,
@@ -53,7 +53,7 @@ class LayoutScreen extends StatelessWidget {
               NavigationDestination(
                 icon: Image.asset(
                   Assets.nav3,
-                  height: 24,
+                  height: 28,
                   color: cubit.currentIndex == 2
                     ?  AppColor.satim
                       : AppColor.black,

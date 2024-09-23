@@ -12,7 +12,7 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCardState extends State<CustomCard> {
-  final TextEditingController mycontroller = TextEditingController();
+  final TextEditingController mycontrollerEmail = TextEditingController();
   final TextEditingController url = TextEditingController();
 
   @override
@@ -24,13 +24,13 @@ class _CustomCardState extends State<CustomCard> {
         height: 297,
         decoration: BoxDecoration(
           borderRadius: BorderRadiusDirectional.circular(18),
-          color: Colors.white, // Set a background color
+          color: Colors.white, 
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2), // Shadow color
-              spreadRadius: 2, // Spread radius
-              blurRadius: 5, // Blur radius
-              offset: const Offset(0, 3), // Changes position of shadow
+              color: Colors.black.withOpacity(0.2), 
+              spreadRadius: 2,
+              blurRadius: 5, 
+              offset: const Offset(0, 3), 
             ),
           ],
         ),
@@ -47,11 +47,11 @@ class _CustomCardState extends State<CustomCard> {
                   fontFamily: 'PoppinsRegular'),
             ),
             CustomInput(
-                hint: 'Website Name',
+                hint: 'Your Email',
                 obc: false,
                 keyboardType: TextInputType.url,
                 icon: Icons.web,
-                mycontroller: mycontroller,
+                mycontroller: mycontrollerEmail,
                 valid: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Url cannot be empty';
