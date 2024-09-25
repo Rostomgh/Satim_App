@@ -6,6 +6,7 @@ import 'package:satim_hack/features/Auth/presentation/view/LoginScreen.dart';
 import 'package:satim_hack/features/Auth/presentation/view/SignupScreen.dart';
 import 'package:satim_hack/features/home/presentation/view/HomeScreen.dart';
 import 'package:satim_hack/features/home/presentation/view/NotifyScreen.dart';
+import 'package:satim_hack/features/home/presentation/view/RequestsScreen.dart';
 
 class AppRoute {
   Route? generateRoute(RouteSettings settings) {
@@ -22,6 +23,8 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const LayoutScreen());
         case '/notify':
         return MaterialPageRoute(builder: (_) => const Notifyscreen());
+        case '/req':
+        return MaterialPageRoute(builder: (_)=> const RequestsScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const ErrorRoute());

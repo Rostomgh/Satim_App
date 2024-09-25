@@ -5,6 +5,7 @@ import 'package:satim_hack/features/Auth/presentation/view/Widget/CustomButton.d
 import 'package:satim_hack/features/Auth/presentation/view/Widget/CustomInput.dart';
 
 class CustomCard extends StatefulWidget {
+
   const CustomCard({super.key});
 
   @override
@@ -12,6 +13,7 @@ class CustomCard extends StatefulWidget {
 }
 
 class _CustomCardState extends State<CustomCard> {
+  bool isChecked_ = false;
   final TextEditingController mycontrollerEmail = TextEditingController();
   final TextEditingController url = TextEditingController();
 
@@ -44,8 +46,9 @@ class _CustomCardState extends State<CustomCard> {
                   fontSize: 30,
                   fontWeight: FontWeight.w500,
                   color: AppColor.black,
-                  fontFamily: 'PoppinsRegular'),
+                  fontFamily: 'PoppinsBold'),
             ),
+            verticalSpace(20),
             Padding(
               padding: const EdgeInsets.only(left:10.0,right: 10),
               child: CustomInput(
@@ -77,7 +80,29 @@ class _CustomCardState extends State<CustomCard> {
                     return null;
                   }),
             ),
-            verticalSpace(19),
+            verticalSpace(10),
+          Row(
+                  children: [
+                    Checkbox(
+                      value: isChecked_,
+                      activeColor: AppColor.satim,
+                      onChanged: (bool? newValue) {
+                        setState(() {
+                          isChecked_ = newValue ?? false;
+                        });
+                      },
+                    ),
+                    const Text(
+                      'i follow The Rolls',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+            verticalSpace(10),
+
             GradientButton(
               text: 'Submit',
               onPressed: () {

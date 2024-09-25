@@ -11,7 +11,7 @@ class Customnotify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(left: 15.0,right: 15,top: 10),
       child: Container(
         width: 360,
         height: 80,

@@ -9,13 +9,14 @@ class Notifyscreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 4,
         title: const Text(
           'Notification',
           style: TextStyle(
               color: AppColor.black, fontFamily: 'PoppinsBold', fontSize: 20),
         ),
       ),
-      body: Customnotify(Name: 'Navigiha',)
+      body:const  Customnotify(Name: 'Navigiha',)
     );
   }
 }

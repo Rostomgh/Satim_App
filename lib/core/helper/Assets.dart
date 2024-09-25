@@ -7,4 +7,5 @@ class Assets {
   static const String nav2 = 'assets/logo/nav2.png';
   static const String nav3 = 'assets/logo/nav3.png';
   static const String active='assets/icon/active.png';
+  static const String req='assets/icon/req.png';
 }

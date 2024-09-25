@@ -29,11 +29,13 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LayoutCubit(),
-        ), 
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light(useMaterial3: true),
+        theme: ThemeData.light(
+          useMaterial3: true,
+        ),
         onGenerateRoute: (settings) => AppRoute().generateRoute(settings),
         home: LogoScreen(),
       ),
