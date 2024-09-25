@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LayoutCubit(),
-        ),
+        ), 
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

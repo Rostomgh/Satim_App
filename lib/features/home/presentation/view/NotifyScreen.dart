@@ -15,7 +15,7 @@ class Notifyscreen extends StatelessWidget {
               color: AppColor.black, fontFamily: 'PoppinsBold', fontSize: 20),
         ),
       ),
-      body: Customnotify()
+      body: Customnotify(Name: 'Navigiha',)
     );
   }
 }
