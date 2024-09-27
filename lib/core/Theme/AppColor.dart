@@ -12,4 +12,5 @@ class AppColor {
   static const Color greenNotif=Color(0xff00AC4F);
   static const Color notActive=Color(0xffD97101);
   static const Color link=Color(0xff4285F4);
+  static const Color animation=Color.fromARGB(255, 218, 55, 218);
 }
